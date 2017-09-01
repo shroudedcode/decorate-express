@@ -60,6 +60,9 @@ If `fn` is a function, then the function is added as route-specific middleware f
 
 If `fn` is a string, then the method with that name will be exectued as route-specific middleware when the action is invoked.
 
+### `param(param: string)`
+
+Marks the method as a handler for all routes that use the specified parameter. This can be useful if you want to do something with it before it's passed on to the actual route handler, for example converting a string to an integer.
 
 ### `route(method: string, path: string, middleware: Middleware[])`
 
@@ -71,7 +74,6 @@ There are shortcuts for the methods below.  I.e., instead of `route('get', '/')`
  * `delete` (called `del` so it compiles)
  * `get`
  * `options`
- * `param`
  * `patch`
  * `post`
  * `put`
