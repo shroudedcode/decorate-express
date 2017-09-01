@@ -1,14 +1,15 @@
 {
-  "name": "express-decorators",
+  "name": "decorate-express",
   "version": "1.0.0",
-  "description": "ES2015 decorators for express",
+  "description": "Awesome decorators for express!",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
   "keywords": [
     "ES6",
     "ES2015",
     "decorators",
-    "express"
+    "express",
+    "typescript"
   ],
   "dependencies": {
     "reflect-metadata": "^0.1.9"
@@ -31,12 +32,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stewartml/express-decorators.git"
+    "url": "git+https://github.com/shroudedcode/decorate-express.git"
   },
-  "author": "Stewart MacKenzie-Leigh",
-  "license": "ISC",
+  "author": {
+    "name": "Niklas Higi",
+    "email": "niklas@shroudedcode.com",
+    "url": "https://shroudedcode.com/"
+  },
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stewartml/express-decorators/issues"
+    "url": "https://github.com/shroudedcode/decorate-express/issues"
   },
-  "homepage": "https://github.com/stewartml/express-decorators#readme"
+  "homepage": "https://github.com/stewartml/decorate-express#readme"
 }
