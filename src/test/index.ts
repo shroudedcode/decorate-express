@@ -118,7 +118,7 @@ describe('A decorated class', () => {
         () => expect(request.params.id).to.equal(5))
       it('should make use of middleware decorated with @use',
         () => expect(request.foo).to.equal(8))
-      it('should make default class properties accessible in @param middleware',
+      it('should make default class properties accessible in @get middleware',
         () => expect(this.bar).to.equal('hello'))
       response.send()
     }
