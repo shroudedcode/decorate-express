@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "ES2015 decorators for express",
   "main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.ts",  
+  "types": "dist/lib/index.d.ts",
   "keywords": [
     "ES6",
     "ES2015",
