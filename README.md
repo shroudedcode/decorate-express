@@ -62,7 +62,15 @@ If `fn` is a string, then the method with that name will be exectued as route-sp
 
 ### `param(param: string)`
 
-Marks the method as a handler for all routes that use the specified parameter. This can be useful if you want to do something with it before it's passed on to the actual route handler, for example converting a string to an integer.
+Marks the method as a handler for all routes that use the specified parameter. This can be useful if you want to do something with it before it's passed on to the actual route handler, for example converting a string to an integer:
+
+```js
+@param('id')
+idParam(request, response, next, id) {
+  request.params.id = parseInt(request.params.id)
+  next()
+}
+```
 
 ### `route(method: string, path: string, middleware: Middleware[])`
 
