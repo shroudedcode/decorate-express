@@ -1,6 +1,6 @@
 {
   "name": "decorate-express",
-  "version": "1.0.0",
+  "version": "0.0.0-semantically-released",
   "description": "Awesome decorators for express!",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
@@ -24,15 +24,17 @@
     "chai-http": "^3.0.0",
     "express": "^4.14.0",
     "mocha": "^3.5.0",
-    "typescript": "^2.1.4"
+    "typescript": "^2.1.4",
+    "semantic-release": "^7.0.2"
   },
   "scripts": {
+    "build": "tsc",
     "test": "mocha dist/test/**/*.js",
-    "prepublish": "tsc"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shroudedcode/decorate-express.git"
+    "url": "https://github.com/shroudedcode/decorate-express.git"
   },
   "author": {
     "name": "Niklas Higi",

@@ -1,0 +1,15 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+node_js: 8
+before_script:
+  - npm prune
+  - npm run build
+script:
+  - npm test
+after_success:
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
