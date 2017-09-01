@@ -14,6 +14,9 @@
   "dependencies": {
     "reflect-metadata": "^0.1.9"
   },
+  "peerDependencies": {
+    "express": "4.x"
+  },
   "devDependencies": {
     "@types/chai": "^4.0.4",
     "@types/chai-http": "^3.0.2",
