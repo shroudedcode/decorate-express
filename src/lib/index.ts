@@ -119,7 +119,7 @@ function getMiddleware(target: Object, fn: Middleware): Express.Handler {
     let middleware = target[fn]
 
     if (!middleware)
-      throw new Error('could not find middlware method ' + fn.toString())
+      throw new Error(`Could not find middlware method ${fn.toString()}!`)
 
     return middleware
   }
