@@ -91,7 +91,7 @@ describe('The @middleware decorator', () => {
 })
 
 
-const classSuite = describe('A decorated class', () => {
+describe('A decorated class', () => {
   @web.basePath('/test')
   class Test {
     bar = 'hello'
