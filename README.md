@@ -1,53 +1,51 @@
-# express-decorators
+# decorate-express
 
-**NOTE: this has been rewritten for version 1, with some breaking changes**
+> This is a fork of @stewartml's [express-decorators](https://github.com/stewartml/express-decorators) package which is no longer actively maintained.
 
-Provides decorators for easily wiring up controller classes to [express.js](http://expressjs.com/) routes.  If you you use [hapijs](http://hapijs.com) and want something similar, then the [hapi-decorators](https://github.com/knownasilya/hapi-decorators) project has you covered.
-
-TypeScript definitions are built in.
+Decorators for easily wiring up controller classes to [Express](http://expressjs.com/) routes.
 
 ## Installation
 
-    $ npm install --save express-decorators
+```
+$ npm install --save express-decorators
+```
 
 ## Example
 
 ```js
-import * as web from 'express-decorators';
-import myMiddlewareFunction from './middleware';
-import express from 'express';
+import * as web from 'decorate-express'
+import myMiddlewareFunction from './middleware'
+import express from 'express'
 
-/*** define a controller class ***/
-
-@web.basePath('/hello')
+@web.basePath('/test')
 public class TestController {
   constructor(target) {
-    this.target = target;
+    this.target = target
   }
 
-  @web.get('/world', myMiddlewareFunction)
+  @web.get('/hello', myMiddlewareFunction)
   async sayHelloAction(request, response) {
-    response.send(`hello, ${this.target}`);
+    response.send(`Hello, ${this.target}!`)
   }
 
   @web.use()
   async otherMiddleware(request, response, next) {
-    // this will get called for every action
+    // This middleware will be called for every action.
+    next()
   }
 }
 
-/*** install the routes in an express app ***/
-let app = express();
-let test = new TestController('world');
-web.register(app, test);
-
-/*** now we can go to  /hello/world and get 'hello, world' back! ***/
+let app = express()
+let test = new TestController('world')
+web.register(app, test)
 ```
+
+When can now go to `/test/hello` and get `Hello, world!` back.
 
 ## Notes
 
- * actions are called with the correct context (i.e. `this` is an instance of the class)
- * actions can return promises (or be `async` methods) and errors will get handled properly
+ * Actions are called with the correct context (i.e. `this` is an instance of the class).
+ * Actions can return [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)'s or be [`async` functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) and errors will get handled properly.
 
 
 ## API
