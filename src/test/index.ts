@@ -95,37 +95,50 @@ describe('A decorated class', () => {
   @web.basePath('/test')
   class Test {
     bar = 'hello'
+    tests: any = { cp: {}, mw: {}}
 
     @web.use()
     setup(request, response, next) {
       request.foo = 8
-      it('should make default class properties accessible in @use middleware',
-        () => expect(this.bar).to.equal('hello'))
+      this.tests.cp.use = expect(this.bar).to.equal('hello')
       next()
     }
 
     @web.param('id')
     idParam(request, response, next, id) {
       request.params.id = parseInt(request.params.id)
-      it('should make default class properties accessible in @param middleware',
-        () => expect(this.bar).to.equal('hello'))
+      this.tests.cp.param = expect(this.bar).to.equal('hello')
       next()
     }
 
     @web.get('/foo/:id')
     foo(request, response) {
-      it('should make use of middleware decorated with @param when needed',
-        () => expect(request.params.id).to.equal(5))
-      it('should make use of middleware decorated with @use',
-        () => expect(request.foo).to.equal(8))
-      it('should make default class properties accessible in @get middleware',
-        () => expect(this.bar).to.equal('hello'))
+      this.tests.mw.param = expect(request.params.id).to.equal(5)
+      this.tests.mw.use = expect(request.foo).to.equal(8)
+      this.tests.cp.get = expect(this.bar).to.equal('hello')
       response.send()
     }
   }
 
   const app = express()
   const controller = new Test()
+
+  describe('should make default class properties available in', () => {
+    it('@use middleware',
+      () => controller.tests.cp.use)
+    it('@param middleware',
+      () => controller.tests.cp.param)
+    it('@get middleware',
+      () => controller.tests.cp.get)
+  })
+
+  describe('should make use of', () => {
+    it('@param middleware when needed',
+      () => controller.tests.mw.param)
+    it('@use middleware',
+      () => controller.tests.mw.use)
+  })
+
   web.register(app, controller)
 
   it('should work without errors inside an express app', (done) => {
