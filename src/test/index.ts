@@ -7,9 +7,12 @@ import * as supertest from 'supertest-as-promised'
 
 chai.use(chaiHttp)
 
-describe('The @get decorator', () => {
+const methods = ['get', 'post', 'put', 'patch', 'del', 'options', 'head', 'use', 'all']
+
+
+describe('The @route decorator', () => {
   class Test {
-    @web.get('/test') getTest() {}
+    @web.route('get', '/test') getTest() {}
   }
 
   const routes = web.getRoutes(new Test())
@@ -29,6 +32,21 @@ describe('The @get decorator', () => {
 
   it('should assign the correct path',
     () => expect(route.path).to.equal('/test'))
+})
+
+
+describe('The method shortcut decorator', () => {
+  for(let method of methods) {
+    describe(`@${method}`, () => {
+      const decorator = web[method]
+      class Test {
+        @decorator('/test') getTest() {}
+      }
+      const route = web.getRoutes(new Test())[0]
+      it('should work',
+        () => expect(route.method.toLowerCase()).to.equal(method))
+    })
+  }
 })
 
 
