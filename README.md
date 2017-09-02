@@ -1,6 +1,6 @@
 # decorate-express
 
-> This is a fork of [@stewartml](https://github.com/stewartml)'s no longer actively mainted [`express-decorators` decoraters](https://github.com/stewartml/express-decorators).
+> This is a fork of [@stewartml](https://github.com/stewartml)'s no longer actively mainted [`express-decorators` package](https://github.com/stewartml/express-decorators).
 
 Decorators for easily wiring up controller classes to [Express](http://expressjs.com/) routes.
 
