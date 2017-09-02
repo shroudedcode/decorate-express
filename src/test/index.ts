@@ -44,7 +44,7 @@ describe('The method shortcut decorator', () => {
       }
       const route = web.getRoutes(new Test())[0]
       it('should work',
-        () => expect(route.method).to.equal(method))
+        () => expect(route.method).to.equal(method.replace('del', 'delete')))
     })
   }
 })
