@@ -1,4 +1,4 @@
-# decorate-express
+# decorate-express [![Travis CI](https://img.shields.io/travis/shroudedcode/decorate-express.svg)](https://travis-ci.org/shroudedcode/decorate-express) [![NPM](https://img.shields.io/npm/v/decorate-express.svg)](https://npm.im/decorate-express)
 
 > This is a fork of [@stewartml](https://github.com/stewartml)'s no longer actively maintained [`express-decorators` package](https://github.com/stewartml/express-decorators).
 
@@ -50,17 +50,17 @@ When can now go to `/test/hello` and get `Hello, world!` back.
 
 ## API
 
-### `basePath(path: string)`
+### `@basePath(path: string)`
 
 Class decorator to add a base path to every route defined in the class.
 
-### `middleware(fn: Middleware)`
+### `@middleware(fn: Middleware)`
 
 If `fn` is a function, then the function is added as route-specific middleware for the action.  Note that the middleware will be bound to the controller instance.
 
 If `fn` is a string, then the method with that name will be exectued as route-specific middleware when the action is invoked.
 
-### `param(param: string)`
+### `@param(param: string)`
 
 Marks the method as a handler for all routes that use the specified parameter. This can be useful if you want to do something with it before it's passed on to the actual route handler, for example converting a string to an integer:
 
@@ -72,24 +72,26 @@ idParam(request, response, next, id) {
 }
 ```
 
-### `route(method: string, path: string, middleware: Middleware[])`
+### `@route(method: string, path: string, middleware: Middleware[])`
 
-Marks the method as a handler for the specified path and http method.  The `route` parameter is just passed straight to the relevant express method, so whatever is valid there is valid here.
+Marks the method as a handler for the specified path and HTTP method.
 
-There are shortcuts for the methods below.  I.e., instead of `route('get', '/')` you can use `get('/')`.
+#### HTTP method shortcuts
 
- * `all`
- * `delete` (called `del` so it compiles)
- * `get`
- * `options`
- * `patch`
- * `post`
- * `put`
- * `use`
+Instead of passing the HTTP method into the `@route` decorator you can also use one of the provided shortcuts. `@get('/path')` for example is equivalent to `@route('get', '/path')`.
+
+ * `@all`
+ * `@del` (not `@delete` because of [the `delete` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete))
+ * `@get`
+ * `@options`
+ * `@patch`
+ * `@post`
+ * `@put`
+ * `@use`
 
 ### `getRoutes(target: Object): Route[]`
 
-Gets the route metadata for the target object.  Paths are automatically prefixed with a base path if one was defined.
+Gets the route metadata for the target object. Paths are automatically prefixed with a base path if one was defined.
 
 ### `register(router: Express.Router, target: Object)`
 
