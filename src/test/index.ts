@@ -28,7 +28,7 @@ describe('The @route decorator', () => {
     () => expect(route.handlers).to.have.lengthOf(1))
 
   it('should assign the correct method',
-    () => expect(route.method.toLowerCase()).to.equal('get'))
+    () => expect(route.method).to.equal('get'))
 
   it('should assign the correct path',
     () => expect(route.path).to.equal('/test'))
@@ -44,7 +44,7 @@ describe('The method shortcut decorator', () => {
       }
       const route = web.getRoutes(new Test())[0]
       it('should work',
-        () => expect(route.method.toLowerCase()).to.equal(method))
+        () => expect(route.method).to.equal(method))
     })
   }
 })
