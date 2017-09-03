@@ -7,7 +7,7 @@ Decorators for easily wiring up controller classes to [Express](http://expressjs
 ## Installation
 
 ```
-$ npm install --save express-decorators
+$ npm install --save decorate-express
 ```
 
 ## Example
