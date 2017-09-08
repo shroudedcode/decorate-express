@@ -1,5 +1,7 @@
 # decorate-express [![Travis CI](https://img.shields.io/travis/shroudedcode/decorate-express.svg)](https://travis-ci.org/shroudedcode/decorate-express) [![NPM](https://img.shields.io/npm/v/decorate-express.svg)](https://npm.im/decorate-express)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/shroudedcode/decorate-express.svg)](https://greenkeeper.io/)
+
 > This is a fork of [@stewartml](https://github.com/stewartml)'s no longer actively maintained [`express-decorators` package](https://github.com/stewartml/express-decorators).
 
 Decorators for easily wiring up controller classes to [Express](http://expressjs.com/) routes.
