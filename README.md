@@ -1,6 +1,8 @@
-# decorate-express [![Travis CI](https://img.shields.io/travis/shroudedcode/decorate-express.svg)](https://travis-ci.org/shroudedcode/decorate-express) [![NPM](https://img.shields.io/npm/v/decorate-express.svg)](https://npm.im/decorate-express)
+# decorate-express
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/shroudedcode/decorate-express.svg)](https://greenkeeper.io/)
+[![Travis CI][travis-badge]][travis-link]
+[![NPM][npm-badge]][npm-link]
+[![Greenkeeper][greenkeeper-badge]][greenkeeper-link]
 
 > This is a fork of [@stewartml](https://github.com/stewartml)'s no longer actively maintained [`express-decorators` package](https://github.com/stewartml/express-decorators).
 
@@ -102,3 +104,12 @@ Registers the routes found on the target object with an express Router instance.
 ## Questions, comments?
 
 Please feel free to start an issue or offer a pull request.
+
+[travis-badge]: https://img.shields.io/travis/shroudedcode/decorate-express.svg
+[travis-link]: https://travis-ci.org/shroudedcode/decorate-express
+
+[npm-badge]: https://img.shields.io/npm/v/decorate-express.svg
+[npm-link]: https://www.npmjs.com/package/decorate-express
+
+[greenkeeper-badge]: https://badges.greenkeeper.io/shroudedcode/decorate-express.svg
+[greenkeeper-link]: https://greenkeeper.io/
