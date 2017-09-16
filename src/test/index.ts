@@ -38,7 +38,6 @@ describe('The @Route decorator', () => {
 describe('The method shortcut decorator', () => {
   for(let method of methods) {
     const decoratorName = capitalize(method)
-    console.log(decoratorName)
     describe(`@${decoratorName}`, () => {
       const Decorator = decorateExpress[decoratorName]
       class Test {
