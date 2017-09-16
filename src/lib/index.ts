@@ -1,7 +1,7 @@
 import * as Express from 'express'
 import 'reflect-metadata'
 
-export class Route {
+export class RouteMetadata {
   method: string
   path: string
   key: string | symbol
@@ -16,7 +16,7 @@ export const basePathKey = Symbol('basePathKey')
 
 
 export function getRouteMetadata(target) {
-  let routes: Route[] = Reflect.getMetadata(routesKey, target)
+  let routes: RouteMetadata[] = Reflect.getMetadata(routesKey, target)
 
   if (!routes) {
     routes = []
@@ -27,7 +27,7 @@ export function getRouteMetadata(target) {
 }
 
 
-export function route(method: string, path: string, middleware: Middleware[] = []) {
+export function Route(method: string, path: string, middleware: Middleware[] = []) {
   return <T extends Express.Handler>(target: Object, key: string | symbol, descriptor: TypedPropertyDescriptor<T>) => {
     let routes = getRouteMetadata(target)
 
@@ -40,57 +40,57 @@ export function route(method: string, path: string, middleware: Middleware[] = [
 }
 
 
-export function basePath(path: string) {
+export function BasePath(path: string) {
   return Reflect.metadata(basePathKey, path)
 }
 
 
-export function get(path: string = '*', middleware: Middleware[] = []) {
-  return route('get', path, middleware)
+export function Get(path: string = '*', middleware: Middleware[] = []) {
+  return Route('get', path, middleware)
 }
 
 
-export function post(path: string = '*', middleware: Middleware[] = []) {
-  return route('post', path, middleware)
+export function Post(path: string = '*', middleware: Middleware[] = []) {
+  return Route('post', path, middleware)
 }
 
 
-export function put(path: string = '*', middleware: Middleware[] = []) {
-  return route('put', path, middleware)
+export function Put(path: string = '*', middleware: Middleware[] = []) {
+  return Route('put', path, middleware)
 }
 
 
-export function patch(path: string = '*', middleware: Middleware[] = []) {
-  return route('patch', path, middleware)
+export function Patch(path: string = '*', middleware: Middleware[] = []) {
+  return Route('patch', path, middleware)
 }
 
 
-export function del(path: string = '*', middleware: Middleware[] = []) {
-  return route('delete', path, middleware)
+export function Delete(path: string = '*', middleware: Middleware[] = []) {
+  return Route('delete', path, middleware)
 }
 
 
-export function options(path: string = '*', middleware: Middleware[] = []) {
-  return route('options', path, middleware)
+export function Options(path: string = '*', middleware: Middleware[] = []) {
+  return Route('options', path, middleware)
 }
 
 
-export function head(path: string = '*', middleware: Middleware[] = []) {
-  return route('head', path, middleware)
+export function Head(path: string = '*', middleware: Middleware[] = []) {
+  return Route('head', path, middleware)
 }
 
 
-export function use(path: string = '*') {
-  return route('use', path)
+export function Use(path: string = '*') {
+  return Route('use', path)
 }
 
 
-export function all(path: string = '*', middleware: Middleware[] = []) {
-  return route('all', path, middleware)
+export function All(path: string = '*', middleware: Middleware[] = []) {
+  return Route('all', path, middleware)
 }
 
 
-export function param(param: string) {
+export function Param(param: string) {
   return <T extends Express.RequestParamHandler>(target: Object, key: string | symbol, descriptor: TypedPropertyDescriptor<T>) => {
     let routes = getRouteMetadata(target)
 
@@ -100,7 +100,7 @@ export function param(param: string) {
 }
 
 
-export function middleware(fn: Middleware) {
+export function Middleware(fn: Middleware) {
   return <T extends Express.Handler>(target: Object, key: string | symbol, descriptor: TypedPropertyDescriptor<T>) => {
     let routes = getRouteMetadata(target)
     let middleware = getMiddleware(target, fn)
@@ -133,8 +133,8 @@ function trimslash(s) {
 }
 
 
-export function getRoutes(target: Object): Route[] {
-  let routes: Route[] = Reflect.getMetadata(routesKey, target) || []
+export function getRoutes(target: Object): RouteMetadata[] {
+  let routes: RouteMetadata[] = Reflect.getMetadata(routesKey, target) || []
   let basePath = Reflect.getMetadata(basePathKey, target.constructor)
 
   if (basePath) {
@@ -142,7 +142,7 @@ export function getRoutes(target: Object): Route[] {
       ({method, path: method === 'param' ? path : trimslash(basePath) + path, key, handlers}))
   }
 
-  let groups: {[id: string]: Route[]} = routes
+  let groups: {[id: string]: RouteMetadata[]} = routes
     .reduce((groups, route) => {
       if (!groups[route.key])
         groups[route.key] = []
@@ -172,7 +172,7 @@ export function getRoutes(target: Object): Route[] {
 }
 
 
-export function register(router: Express.Router, target: Object) {
+export function registerRoutes(router: Express.Router, target: Object) {
   let routes = getRoutes(target)
 
   for (let route of routes) {
