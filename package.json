@@ -25,13 +25,13 @@
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
     "express": "^4.14.0",
-    "mocha": "^3.5.0",
+    "mocha": "^4.0.0",
     "semantic-release": "^8.0.0",
     "typescript": "^2.1.4"
   },
   "scripts": {
     "build": "tsc",
-    "test": "mocha dist/test/**/*.js",
+    "test": "mocha dist/test/**/*.js --exit",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
