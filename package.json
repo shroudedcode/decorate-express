@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "mocha dist/test/**/*.js",
+    "test": "mocha dist/test/**/*.js --exit",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
