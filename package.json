@@ -1,7 +1,7 @@
 {
   "name": "decorate-express",
   "version": "0.0.0-semantically-released",
-  "description": "Awesome decorators for express!",
+  "description": "Route decorators for Express.",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
   "keywords": [
