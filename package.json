@@ -27,7 +27,6 @@
     "express": "^4.14.0",
     "mocha": "^5.0.0",
     "semantic-release": "^12.2.5",
-    "semantic-release": "^8.0.0",
     "typescript": "^2.1.4"
   },
   "scripts": {
