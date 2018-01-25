@@ -35,15 +35,8 @@
     "test": "mocha dist/test/**/*.js --exit",
     "semantic-release": "semantic-release"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/shroudedcode/decorate-express.git"
-  },
-  "author": {
-    "name": "Niklas Higi",
-    "email": "niklas@shroudedcode.com",
-    "url": "https://shroudedcode.com/"
-  },
+  "repository": "shroudedcode/decorate-express",
+  "author": "Niklas Higi <niklas@shroudedcode.com> (https://shroudedcode.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shroudedcode/decorate-express/issues"
