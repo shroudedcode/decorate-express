@@ -19,19 +19,19 @@ describe('The @Route decorator', () => {
   const route = routes[0]
 
   it('should return the correct amount of routes',
-    () => expect(routes).to.have.lengthOf(1))
+    () => void expect(routes).to.have.lengthOf(1))
 
   it('should assign the correct key',
-    () => expect(route.key).to.equal('getTest'))
+    () => void expect(route.key).to.equal('getTest'))
 
   it('should assign a handler',
-    () => expect(route.handlers).to.have.lengthOf(1))
+    () => void expect(route.handlers).to.have.lengthOf(1))
 
   it('should assign the correct method',
-    () => expect(route.method).to.equal('get'))
+    () => void expect(route.method).to.equal('get'))
 
   it('should assign the correct path',
-    () => expect(route.path).to.equal('/test'))
+    () => void expect(route.path).to.equal('/test'))
 })
 
 
@@ -45,7 +45,7 @@ describe('The method shortcut decorator', () => {
       }
       const route = decorateExpress.getRoutes(new Test())[0]
       it('should work',
-        () => expect(route.method).to.equal(method))
+        () => void expect(route.method).to.equal(method))
     })
   }
 })
@@ -59,7 +59,7 @@ describe('Multiple decorated routes', () => {
 
   const routes = decorateExpress.getRoutes(new Test())
   it('should work as well',
-    () => expect(routes).to.have.lengthOf(2))
+    () => void expect(routes).to.have.lengthOf(2))
 })
 
 
@@ -71,7 +71,7 @@ describe('The @BasePath decorator', () => {
 
   const route = decorateExpress.getRoutes(new Test())[0]
   it('should prepend all routes in the decorated class',
-    () => expect(route.path).to.equal('/test/foo'))
+    () => void expect(route.path).to.equal('/test/foo'))
 })
 
 
@@ -86,9 +86,9 @@ describe('The @Middleware decorator', () => {
 
   const route = decorateExpress.getRoutes(new Test())[0]
   it('should assign itself to routes',
-    () => expect(route.handlers).to.have.lengthOf(2))
+    () => void expect(route.handlers).to.have.lengthOf(2))
   it('should not affect @basePath\'s',
-    () => expect(route.path).to.equal('/test/foo'))
+    () => void expect(route.path).to.equal('/test/foo'))
 })
 
 
